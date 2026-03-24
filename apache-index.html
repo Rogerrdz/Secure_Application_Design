@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cliente Basico Secure App</title>
+</head>
+<body>
+  <h1>Cliente Basico (Apache)</h1>
+
+  <p>API: <input id="apiBase" value="http://localhost:8443/api" size="40" /></p>
+  <p>Usuario: <input id="username" value="admin" /></p>
+  <p>Password: <input id="password" type="password" value="123456" /></p>
+  <p>Email (registro): <input id="email" value="admin@secureapp.com" /></p>
+
+  <button id="btnRegister">POST /auth/register</button>
+  <button id="btnLogin">POST /auth/login</button>
+  <button id="btnHello">GET /secure/hello</button>
+
+  <pre id="out">Respuesta...</pre>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function getBase() {
+      return $("apiBase").value.trim();
+    }
+
+    function getUser() {
+      return $("username").value.trim();
+    }
+
+    function getPass() {
+      return $("password").value;
+    }
+
+    function getEmail() {
+      return $("email").value.trim();
+    }
+
+    function setOut(data) {
+      $("out").textContent = typeof data === "string" ? data : JSON.stringify(data, null, 2);
+    }
+
+    async function request(method, path, body, useBasicAuth) {
+      const headers = { "Content-Type": "application/json" };
+
+      if (useBasicAuth) {
+        headers["Authorization"] = "Basic " + btoa(getUser() + ":" + getPass());
+      }
+
+      const options = { method, headers };
+      if (body) {
+        options.body = JSON.stringify(body);
+      }
+
+      try {
+        const resp = await fetch(getBase() + path, options);
+        const text = await resp.text();
+        let parsed;
+
+        try {
+          parsed = JSON.parse(text);
+        } catch {
+          parsed = text;
+        }
+
+        setOut({ status: resp.status, body: parsed });
+      } catch (err) {
+        setOut({ error: err.message });
+      }
+    }
+
+    $("btnRegister").addEventListener("click", () => {
+      request("POST", "/auth/register", {
+        username: getUser(),
+        password: getPass(),
+        email: getEmail()
+      }, false);
+    });
+
+    $("btnLogin").addEventListener("click", () => {
+      request("POST", "/auth/login", {
+        username: getUser(),
+        password: getPass()
+      }, false);
+    });
+
+    $("btnHello").addEventListener("click", () => {
+      request("GET", "/secure/hello", null, true);
+    });
+  </script>
+</body>
+</html>
