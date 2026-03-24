@@ -1,6 +1,4 @@
-# Secure Application Design - Architecture
-
-Secure Application Design (AWS + Apache + Spring Boot)
+# Secure Application Design (AWS + Apache + Spring Boot)
 
 This project was built for the Enterprise Architecture Workshop: Secure Application Design. The solution uses a two-server architecture: Server 1 runs Apache to serve an asynchronous HTML/JS frontend, and Server 2 runs Spring Boot to expose REST endpoints for authentication and protected resources using Spring Security, BCrypt password hashing, and TLS support for deployment.
 
