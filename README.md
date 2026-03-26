@@ -100,6 +100,33 @@ GET /api/secure/status (authenticated)
 Request without credentials or with invalid credentials  
 ![Unauthorized access evidence](resources/get_unauthorized_cedentials_try.png)
 
+### Apache Frontend Evidence
+
+POST /api/auth/register from Apache frontend  
+![Apache register endpoint evidence](resources/post_register_endpoint_Apache_server.png)
+
+POST /api/auth/login from Apache frontend  
+![Apache login endpoint evidence](resources/post_auth_endpoint_Apache_server.png)
+
+GET /api/secure/hello from Apache frontend  
+![Apache hello endpoint evidence](resources/get_auth_hello_endpoint_Apache_server.png)
+
+GET /api/secure/profile from Apache frontend  
+![Apache profile endpoint evidence](resources/get_auth_profile_endpoint_Apache_server.png)
+
+GET /api/secure/users from Apache frontend  
+![Apache users list endpoint evidence](resources/get_auth_usersList_endpoint_Apache_server.png)
+
+GET /api/secure/users/{id} from Apache frontend  
+![Apache user by id endpoint evidence](resources/get_auth_userbyid_endpoint_Apache_server.png)
+
+GET /api/secure/status from Apache frontend  
+![Apache status endpoint evidence](resources/get_securestatus_Apache_server.png)
+
+## Video of the functionality
+
+Video demo: [Watch functionality video](resources/video_funcionamiento.mp4)
+
 ### And coding style tests
 
 Explain what these tests test and why
@@ -157,3 +184,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Lab_Reference project for architectural guidance
 * Enterprise Architecture Workshop context
 * Spring and Apache documentation
+

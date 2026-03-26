@@ -8,14 +8,19 @@
 <body>
   <h1>Cliente Basico (Apache)</h1>
 
-  <p>API: <input id="apiBase" value="http://localhost:8443/api" size="40" /></p>
+  <p>API: <input id="apiBase" value="http://spring-server-secureapplication.duckdns.org:8443/api" size="40" /></p>
   <p>Usuario: <input id="username" value="admin" /></p>
   <p>Password: <input id="password" type="password" value="123456" /></p>
   <p>Email (registro): <input id="email" value="admin@secureapp.com" /></p>
+  <p>User ID: <input id="userId" type="number" value="1" min="1" /></p>
 
   <button id="btnRegister">POST /auth/register</button>
   <button id="btnLogin">POST /auth/login</button>
   <button id="btnHello">GET /secure/hello</button>
+  <button id="btnProfile">GET /secure/profile</button>
+  <button id="btnUsers">GET /secure/users</button>
+  <button id="btnUserById">GET /secure/users/{id}</button>
+  <button id="btnStatus">GET /secure/status</button>
 
   <pre id="out">Respuesta...</pre>
 
@@ -36,6 +41,10 @@
 
     function getEmail() {
       return $("email").value.trim();
+    }
+
+    function getUserId() {
+      return $("userId").value.trim();
     }
 
     function setOut(data) {
@@ -88,6 +97,22 @@
 
     $("btnHello").addEventListener("click", () => {
       request("GET", "/secure/hello", null, true);
+    });
+
+    $("btnProfile").addEventListener("click", () => {
+      request("GET", "/secure/profile", null, true);
+    });
+
+    $("btnUsers").addEventListener("click", () => {
+      request("GET", "/secure/users", null, true);
+    });
+
+    $("btnUserById").addEventListener("click", () => {
+      request("GET", "/secure/users/" + getUserId(), null, true);
+    });
+
+    $("btnStatus").addEventListener("click", () => {
+      request("GET", "/secure/status", null, true);
     });
   </script>
 </body>
