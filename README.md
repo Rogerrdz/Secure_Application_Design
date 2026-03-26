@@ -125,7 +125,7 @@ GET /api/secure/status from Apache frontend
 
 ## Video of the functionality
 
-Video demo: [Watch functionality video](resources/video_funcionamiento.mp4)
+https://pruebacorreoescuelaingeduco-my.sharepoint.com/:v:/g/personal/roger_rodriguez-a_mail_escuelaing_edu_co/IQBKObmIQn5bT5qZlCunL4p_AedArW7SdRgwZO4siWbS1zI?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=waJNHA
 
 ### And coding style tests
 
